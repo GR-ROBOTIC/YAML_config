@@ -1,0 +1,220 @@
+didi@didi-VPCSE2V9E:~$ ssh -v cisdec@192.168.100.98
+OpenSSH_8.2p1 Ubuntu-4ubuntu0.13, OpenSSL 1.1.1f  31 Mar 2020
+debug1: Reading configuration data /home/didi/.ssh/config
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files
+debug1: /etc/ssh/ssh_config line 21: Applying options for *
+debug1: Connecting to 192.168.100.98 [192.168.100.98] port 22.
+debug1: Connection established.
+debug1: identity file /home/didi/.ssh/id_rsa type 0
+debug1: identity file /home/didi/.ssh/id_rsa-cert type -1
+debug1: identity file /home/didi/.ssh/id_dsa type -1
+debug1: identity file /home/didi/.ssh/id_dsa-cert type -1
+debug1: identity file /home/didi/.ssh/id_ecdsa type -1
+debug1: identity file /home/didi/.ssh/id_ecdsa-cert type -1
+debug1: identity file /home/didi/.ssh/id_ecdsa_sk type -1
+debug1: identity file /home/didi/.ssh/id_ecdsa_sk-cert type -1
+debug1: identity file /home/didi/.ssh/id_ed25519 type 3
+debug1: identity file /home/didi/.ssh/id_ed25519-cert type -1
+debug1: identity file /home/didi/.ssh/id_ed25519_sk type -1
+debug1: identity file /home/didi/.ssh/id_ed25519_sk-cert type -1
+debug1: identity file /home/didi/.ssh/id_xmss type -1
+debug1: identity file /home/didi/.ssh/id_xmss-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.13
+debug1: Remote protocol version 2.0, remote software version OpenSSH_8.2p1 Ubuntu-4ubuntu0.13
+debug1: match: OpenSSH_8.2p1 Ubuntu-4ubuntu0.13 pat OpenSSH* compat 0x04000000
+debug1: Authenticating to 192.168.100.98:22 as 'cisdec'
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: ecdsa-sha2-nistp256
+debug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ecdsa-sha2-nistp256 SHA256:ZayV84sFX+I877jitNtC10sTssM2iKpf4D/L4dF/v3I
+debug1: Host '192.168.100.98' is known and matches the ECDSA host key.
+debug1: Found key in /home/didi/.ssh/known_hosts:17
+debug1: resetting send seqnr 3
+debug1: rekey out after 134217728 blocks
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: resetting read seqnr 3
+debug1: SSH2_MSG_NEWKEYS received
+debug1: rekey in after 134217728 blocks
+debug1: Will attempt key: /home/didi/.ssh/id_rsa RSA SHA256:El/9BZbIsYRSFonmmnQxdFIwxTZb+V37Mj3+/OaonN8 agent
+debug1: Will attempt key: /home/didi/.ssh/id_ed25519 ED25519 SHA256:bvS7uP0Z8KIu8a6niu3R5ZnFfBfXE3JEC3HoG/Md9mA agent
+debug1: Will attempt key: /home/didi/.ssh/id_dsa 
+debug1: Will attempt key: /home/didi/.ssh/id_ecdsa 
+debug1: Will attempt key: /home/didi/.ssh/id_ecdsa_sk 
+debug1: Will attempt key: /home/didi/.ssh/id_ed25519_sk 
+debug1: Will attempt key: /home/didi/.ssh/id_xmss 
+debug1: SSH2_MSG_EXT_INFO received
+debug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com>
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,password
+debug1: Next authentication method: publickey
+debug1: Offering public key: /home/didi/.ssh/id_rsa RSA SHA256:El/9BZbIsYRSFonmmnQxdFIwxTZb+V37Mj3+/OaonN8 agent
+debug1: Authentications that can continue: publickey,password
+debug1: Offering public key: /home/didi/.ssh/id_ed25519 ED25519 SHA256:bvS7uP0Z8KIu8a6niu3R5ZnFfBfXE3JEC3HoG/Md9mA agent
+debug1: Authentications that can continue: publickey,password
+debug1: Trying private key: /home/didi/.ssh/id_dsa
+debug1: Trying private key: /home/didi/.ssh/id_ecdsa
+debug1: Trying private key: /home/didi/.ssh/id_ecdsa_sk
+debug1: Trying private key: /home/didi/.ssh/id_ed25519_sk
+debug1: Trying private key: /home/didi/.ssh/id_xmss
+debug1: Next authentication method: password
+cisdec@192.168.100.98's password:
+
+Afficher plus
+
+Pinpointed password prompt as next troubleshooting step
+Pinpointed password prompt as next troubleshooting step
+En fait, ce log montre que tout fonctionne bien jusqu'ici : la connexion TCP est établie, l'échange de clés se fait, et ça arrive bien au prompt du mot de passe (cisdec@192.168.100.98's password:).
+
+La vraie question, c'est ce qui se passe après avoir tapé le mot de passe. Le -v doit continuer à afficher des lignes après ça.
+
+Tapez votre mot de passe et laissez la commande aller jusqu'au bout
+Puis copiez-collez tout ce qui s'affiche après la ligne cisdec@192.168.100.98's password:, notamment les lignes finales — normalement vous devriez voir soit :
+
+Authenticated to 192.168.100.98... → connexion réussie, un shell devrait s'ouvrir
+Permission denied, please try again. → mauvais mot de passe
+Une ligne qui bloque et ne va nulle part → possible souci de MTU réseau ou de configuration serveur après authentification
+Envoyez-moi la suite complète du log, après avoir tapé le mot de passe.
+
+le mot depasse cest 0000 met ca ne fonctionn epas
+
+
+Investigated login failure beyond weak password concerns
+Investigated login failure beyond weak password concerns
+D'accord — un mot de passe à 4 chiffres (0000) peut poser problème dans certains cas, car les systèmes Ubuntu ont parfois des règles de complexité minimale (PAM) qui refusent silencieusement l'authentification si le mot de passe ne respecte pas certains critères, même si le mot de passe est "correct" en local.
+
+1. Voyez d'abord la suite complète du log après avoir tapé le mot de passe
+Relancez et cette fois copiez-collez tout, y compris ce qui apparaît juste après avoir tapé 0000 et Entrée :
+
+bash
+ssh -v cisdec@192.168.100.98
+2. En parallèle, sur le serveur, vérifiez les logs au moment de la tentative
+bash
+sudo journalctl -u ssh -f
+Retentez la connexion depuis le PC et regardez ce qui apparaît côté serveur — ça devrait clairement dire Failed password ou autre chose de précis.
+
+3. Test rapide : le mot de passe fonctionne-t-il vraiment en local ?
+Sur le serveur lui-même, testez encore une fois pour confirmer :
+
+bash
+ssh cisdec@localhost
+Avec le mot de passe 0000.
+
+⚠️ Petite remarque de sécurité au passage : un mot de passe comme 0000 est extrêmement faible, surtout si ce serveur sera accessible pour gérer des caméras (données sensibles). Une fois la connexion réglée, pensez à le changer pour quelque chose de plus robuste avec :
+
+bash
+sudo passwd cisdec
+Envoyez-moi d'abord le log complet du ssh -v après saisie du mot de passe, ça nous dira exactement ce qui se passe.
+
+jai changer le modepasse en plus long ce ne marche pas
+
+
+Investigated authentification SSH et configurations système potentielles
+Investigated authentification SSH et configurations système potentielles
+Il faut absolument voir ce qui se passe après la saisie du mot de passe pour identifier la cause exacte. Faisons ça avec les deux terminaux en parallèle, étape par étape.
+
+Étape 1 : Sur le serveur, ouvrez les logs en direct
+bash
+sudo journalctl -u ssh -f
+Laissez ce terminal ouvert et visible.
+
+Étape 2 : Depuis votre PC, relancez la connexion en mode verbeux
+bash
+ssh -v cisdec@192.168.100.98
+Tapez le nouveau mot de passe.
+
+Étape 3 : Copiez-collez ICI deux choses
+A) Tout ce qui s'affiche dans le terminal du PC après avoir tapé le mot de passe (même si ça semble bloqué/figé, dites-le)
+
+B) Tout ce qui apparaît dans le terminal du serveur (journalctl) au même moment
+
+Sans ces deux logs précis, je tourne un peu à l'aveugle. Une chose importante à préciser aussi : quand vous dites "ça ne marche pas", est-ce que :
+
+Le terminal reste bloqué indéfiniment (pas de retour) ?
+Il affiche à nouveau Permission denied, please try again ?
+Il affiche une autre erreur ?
+Dites-moi exactement ce qui s'affiche, mot pour mot.
+
+cite moi tout les comment lier a nx optix  et leur utilites
+
+
+Orchestrated comprehensive Nx Optix command reference compilation
+Orchestrated comprehensive Nx Optix command reference compilation
+Voici un récapitulatif de toutes les commandes liées à Nx Witness (Network Optix) avec leur utilité :
+
+Installation
+bash
+sudo apt update && sudo apt upgrade -y
+Met à jour le système avant l'installation.
+
+bash
+wget https://updates.networkoptix.com/default/39873/linux/nxwitness-server-6.0.1.39873-linux_x64.deb -O nxwitness-server.deb
+Télécharge le paquet d'installation du serveur.
+
+bash
+sudo apt install ./nxwitness-server.deb
+Installe le paquet en gérant automatiquement les dépendances.
+
+bash
+sudo apt --fix-broken install -y
+Corrige les dépendances manquantes si l'installation échoue.
+
+Méthodes alternatives d'installation (moins recommandées) :
+
+bash
+sudo apt install gdebi-core -y
+sudo gdebi nxwitness-server.deb
+bash
+sudo dpkg -i nxwitness-server.deb
+sudo apt --fix-broken install -y
+Gestion du service
+bash
+sudo systemctl status networkoptix-mediaserver
+Affiche l'état du service (actif, arrêté, en erreur).
+
+bash
+sudo systemctl start networkoptix-mediaserver
+Démarre le service.
+
+bash
+sudo systemctl stop networkoptix-mediaserver
+Arrête le service.
+
+bash
+sudo systemctl restart networkoptix-mediaserver
+Redémarre le service (utile après une modif de config).
+
+bash
+sudo systemctl enable networkoptix-mediaserver
+Active le démarrage automatique au boot du serveur.
+
+Diagnostic / Logs
+bash
+sudo journalctl -u networkoptix-mediaserver -n 100 --no-pager
+Affiche les 100 dernières lignes de log du service (essentiel pour diagnostiquer un crash).
+
+bash
+sudo journalctl -u networkoptix-mediaserver -f
+Suit les logs en temps réel (-f = follow).
+
+bash
+sudo tail -100 /opt/networkoptix/mediaserver/var/log/log_file.log
+Affiche le log interne propre à Nx Witness (différent du log système).
+
+bash
+sudo find / -name "log_file*" 2>/dev/null
+Localise le fichier de log si le chemin par défaut a changé.
+
+bash
+sudo /opt/networkoptix/mediaserver/bin/mediaserver-bin
+Lance le serveur manuellement en avant-plan (hors service systemd) pour voir l'erreur exacte en direct — très utile en cas de crash silencieux.
+
+Accès à l'interface
+Une fois le service actif, accès web depuis un navigateur (pas en ligne de commande) :
+
+http://VOTRE_IP:7001
